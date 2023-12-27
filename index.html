@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js">
+        
+    </script>
     <style>
         
         @import url('https://fonts.cdnfonts.com/css/franklin-gothic');
@@ -16,14 +19,14 @@
         }
         .section1 {
             width: 100%;
-            min-height: 200vh;
+            height: 400vh;
             position: relative;
             background-image: linear-gradient(to bottom, #010133, #360140, #f55442);
             margin: 0px;
         }
         .title {
-            top: 20%;
-            left: 28%;
+            top: 30vh;
+            left: 28vw;
             position: absolute;
             font-family: 'Franklin Gothic';
             font-size: 10vw;
@@ -34,7 +37,7 @@
         #planet1 {
             position: relative;
             width: 5vw;
-            top: 20vw;
+            top: 15vw;
             left: 80vw;
         }
         #planet2 {
@@ -56,8 +59,8 @@
             left: 50vw;
         }
         .abouttext {
-            top: 30%;
-            left: 15%;
+            top: 50vh;
+            left: 15vw;
             position: absolute;
             font-family: 'Franklin Gothic';
             font-size: 3vw;
@@ -66,8 +69,8 @@
             transform: scale(1, 1.1), translate(-50%, 10%);
         }
         .abouttext2 {
-            top: 34%;
-            left: 25%;
+            top: 57vh;
+            left: 25vw;
             position: absolute;
             font-family: 'Franklin Gothic';
             font-size: 3vw;
@@ -75,6 +78,42 @@
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
             transform: scale(1, 1.1), translate(-50%, 10%);
         }       
+        #aboutbutton {
+            font-family: 'Franklin Gothic';
+            font-size: 2vw;
+            color: #360140;
+            top: 65vh;
+            left: 33.5vw;
+            width: 9vw;
+            height: 6vh;
+            border-radius: 20px;
+            position: absolute;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
+        }
+        #projectsbutton {
+            font-family: 'Franklin Gothic';
+            font-size: 2vw;
+            color: #360140;
+            top: 65vh;
+            left: 43.5vw;
+            width: 9vw;
+            height: 6vh;
+            border-radius: 20px;
+            position: absolute;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
+        }
+        #contactbutton {
+            font-family: 'Franklin Gothic';
+            font-size: 2vw;
+            color: #360140;
+            top: 65vh;
+            left: 53.5vw;
+            width: 9vw;
+            height: 6vh;
+            border-radius: 20px;
+            position: absolute;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
+        }
 
     </style>
     <div class = "section1">
@@ -91,6 +130,10 @@
         <img src = "images/Planet2.png" id = "planet2">
         <img src = "images/Planet3.png" id = "planet3">
         <img src = "images/Planet4.png" id = "planet4">
+
+        <button id = "aboutbutton" onclick="scrolltoabout">About</button>
+        <button id = "projectsbutton">Projects</button>
+        <button id = "contactbutton">Contact</button>
     </div>
 </head>
 <body>
