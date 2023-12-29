@@ -114,7 +114,118 @@
             position: absolute;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
         }
-
+        #subheader1 {
+            top: 105vh;
+            left: 38vw;
+            position: absolute;
+            font-family: 'Franklin Gothic';
+            font-size: 5vw;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
+            transform: scale(1, 1.1), translate(-50%, 10%);
+        }
+        #logo {
+            border-radius: 50%;
+            width: 25vw;
+            position: absolute;
+            top: 124vh;
+            left: 3vw;
+        }
+        #info {
+            top: 125vh;
+            left: 30vw;
+            position: absolute;
+            font-family: 'Franklin Gothic';
+            font-size: 2vw;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
+            transform: scale(1, 1.1), translate(-50%, 10%);
+        }
+        #projectsbutton2 {
+            font-family: 'Franklin Gothic';
+            font-size: 2vw;
+            color: #360140;
+            top: 60vh;
+            left: 12vw;
+            width: 9vw;
+            height: 6vh;
+            border-radius: 20px;
+            position: absolute;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
+        }
+        #subheader2 {
+            top: 205vh;
+            left: 35vw;
+            position: absolute;
+            font-family: 'Franklin Gothic';
+            font-size: 5vw;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
+            transform: scale(1, 1.1), translate(-50%, 10%);
+        }
+        #projects {
+            top: 225vh;
+            left: 5vw;
+            position: absolute;
+            font-family: 'Franklin Gothic';
+            font-size: 2vw;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
+            transform: scale(1, 1.1), translate(-50%, 10%);
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        #contactbutton2{
+            font-family: 'Franklin Gothic';
+            font-size: 2vw;
+            color: #360140;
+            top: 60vh;
+            left: 35vw;
+            width: 9vw;
+            height: 6vh;
+            border-radius: 20px;
+            position: absolute;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
+        }
+        .contactcontent {
+            top: 325vh;
+            left: 30vw;
+            position: absolute;
+            font-family: 'Franklin Gothic';
+            font-size: 2vw;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
+            transform: scale(1, 1.1), translate(-50%, 10%);
+        }
+        #subheader3{
+            top: 305vh;
+            left: 32.5vw;
+            position: absolute;
+            font-family: 'Franklin Gothic';
+            font-size: 5vw;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
+            transform: scale(1, 1.1), translate(-50%, 10%);
+        }
+        .finalquote {
+            font-family: 'Franklin Gothic';
+            font-size: 2vw;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255, 255, 255, 0.5);
+            transform: scale(1, 1.1), translate(-50%, 10%);
+        }
+        .line1 {
+            top: 375vh;
+            left: 6.5vw;
+            position: absolute;
+        }
+        .line2 {
+            top: 385vh;
+            left: 37vw;
+            position: absolute;
+        }
     </style>
     <div class = "section1">
         <div class="title">
@@ -131,9 +242,80 @@
         <img src = "images/Planet3.png" id = "planet3">
         <img src = "images/Planet4.png" id = "planet4">
 
-        <button id = "aboutbutton" onclick="scrolltoabout">About</button>
-        <button id = "projectsbutton">Projects</button>
-        <button id = "contactbutton">Contact</button>
+        <button id = "aboutbutton" onclick="scrolltoabout()">About</button>
+        <button id = "projectsbutton" onclick="scrolltoproject()">Projects</button>
+        <button id = "contactbutton" onclick="scrolltocontact()">Contact</button>
+    </div>
+    <div class = "section2">
+        <div id="subheader1">
+            About me
+        </div>
+        <img src="images/pfp.png" id="logo">
+        <div id = "info">
+            Hi! I'm a curious student currently living in the United Kingdom. 
+            <ul>
+                <li>
+                My interests include Physics, Mathematics, Chemistry, Economics and Computer Science.
+                </li>
+                <li> 
+                I plan to undertake A-Levels in Physics, Mathematics, Further Mathematics and Chemistry, pursuing Engineering and/or the Natural Sciences.
+                </li>
+                <li>
+                I also code at a hobbyist level, currently learning C++, but I am also capable at programming in Python, Golang, C#, and C as well as having an understanding of JavaScript,  HTML+CSS, and Java.
+                </li>
+                <li>
+                I also know how to use Python libraries like MatPlotLib, SciKitLearn for ML and plan on familiarizing myself with Tensorflow.
+                </li>
+                <li>
+                I have a basic understanding of networking and the Linux terminal. 
+                </li>
+                <li>
+                However, overall, I am interested in learning more about all fields, not just the sciences.
+                </li>
+            </ul>
+            <button id = "projectsbutton2" onclick="scrolltoproject()">Next</button>
+        </div>
+    </div>
+    <div class ="section3">
+        <div id="subheader2">
+            My Projects
+        </div>
+        <div id="projects">
+            Here are some of the things I've been working on: 
+
+            <ul>
+                <li><a href = "https://github.com/JustTyping1/Kody">Kody - an assistant in the terminal (Golang - learning webscraping)</a></li>
+                <li><a href="https://github.com/JustTyping1/Programmers-Toolkit">Programmer's Toolkit - a GUI applet written in Tkinter to help you whilst programming (Python - learning about GUIs)</a></li>
+                <li><a href="https://github.com/JustTyping1/Physics-Simulation">Physics Sim - A very basic physics simulation (Python - learning pygame)</a></li>
+                <li><a href="https://github.com/JustTyping1/Physics-Simulation">Predictor - Predicting the closing value of stock indexes based on the opening price (Jupiter Notebook - leaning SciKitLearn)</a></li>
+                <li>I am currently working on : Pendulum Model Website</li>
+                <br>
+                <br>
+                <li>All of my projects (finished and unifinished) can be seen at : <a href="https://github.com/JustTyping1">my Github</a></li>
+            </ul>
+
+            <button id = "contactbutton2" onclick="scrolltocontact()">Next</button>
+        </div>
+
+    </div>
+    <div class = "section4">
+        <div id="subheader3">
+            Get in touch!
+        </div>
+        <div class ="contactcontent">
+            <ul>
+                <li>Get in touch on : <a href="https://stackoverflow.com/users/19384613/justtyping1">StackOverflow</a></li>
+                <li>Or send an email to me.justtyping123@gmail.com</li>
+            </ul>
+        </div>
+        <div class = "finalquote">
+            <i class = line1>
+            “I would rather have questions that can't be answered than answers that can't be questioned."
+            </i>
+            <i class = "line2">
+                - Richard P Feynman
+            </i>
+        </div>
     </div>
 </head>
 <body>
