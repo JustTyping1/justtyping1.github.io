@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article Title — Aditya C</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@500;600&display=swap');
+
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --muted: #555;
+      --accent: #0066cc;
+      --navy: #0b1a33;
+      --max-width: 780px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* PROGRESS BAR */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.1s ease-out;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 1.2rem 1.5rem;
+    }
+
+    header a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    header a:hover {
+      color: white;
+    }
+
+    /* ARTICLE BODY */
+    .content {
+      max-width: var(--max-width);
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Typography */
+    p {
+      margin: 1.5rem 0;
+      font-size: 1.08rem;
+    }
+
+    h2 {
+      margin-top: 2.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      color: var(--accent);
+    }
+
+    code {
+      background: #f0f0f0;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid #eee;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PROGRESS BAR -->
+  <div id="progress-bar"></div>
+
+  <header>
+    <a href="../posts.html">← Back to Posts</a>
+  </header>
+
+  <div class="content">
+    <h1 class="title">Quantum Computing - what is it?</h1>
+    <div class="date">Published: November 9th, 2025</div>
+
+    <p>
+    If you've been following technology news recently, you've probably heard of quantum computing. There have been some quite astonishing advances in the field this year, including the release of the Majorana Quantum Chip by Microsoft in February, and Google's quantum breakthrough in the development of a verifiable quantum-advantage algorithm in October. The so-called "year of quantum" (with 2025 marking the centenary of the advent of quantum mechanics), appears to have lived up to its name. However, quantum physics, and by extension, quantum technologies, often have many misconceptions surrounding their capabilities and potential. It is quite clear that in the logistic curve of technological advancements, when it comes to quantum computing, we are still in the lag phase. Industrial quantum computers are still very much in an R&D phase, let alone commercially viable quantum computers. 
+      </p><p>
+    So, if that's the case, what's the hype about? How do quantum computers work and what makes them so special when compared to classical computers? 
+        </p> <p>
+    The most important component of the quantum computer is the qubit. This is the quantum equivalent of the bit, seen in classical computers. The primary difference between the two is the principle of superposition (as well as interference and entanglement), meaning, it is the ability of a qubit to represent multiple quantum states at the same time. Whereas a classical computer's bits, could only represent a 1 or a 0, a qubit exists in a superposition, representing 1 and 0 at the same time, with some probability for either of the respective states. 
+</p>
+    <p>Quantum algorithms can use this superposition to improve on the time complexity of their classical counterparts. For example, Grover's algorithm (one of the simpler quantum algorithms) is a search algorithm (used to find an element in an array). Our best searching algorithm on classical computers has a time complexity proportional to the number of elements, meaning that if we were to quadruple the number of elements in the list, the search would take four times as long. However, using Grover's algorithm, exploiting the nature of qubits to improve this such that the time complexity is proportional to the square root of the number of elements i.e. if we were to quadruple the member of elements, the search will only take twice as long! It is important to note that so far, we have only developed a handful of algorithms on quantum computers than can significantly outclass those on classical computers, however, the algorithms that we have developed have enormous potential for reshaping our digital landscape. For example, Shor's algorithm allows quantum computers to factor the products of two prime numbers of orders of magnitude faster than our best classical supercomputers. Our current encryption infrastructure is largely dependent on the impracticality of factoring these semiprimes using classical computers. If quantum computers become commercially viable, this will necessitate the development of post-quantum encryption algorithms, which can provide better defences against quantum algorithms. 
+    </p><p>Quantum computers could also cause major advancements in machine learning and artificial intelligence. For example, our current methods for training machine learning models require enormous, state-of-the-art compute centres due to the vast amounts of data needed. Quantum training algorithms, where machine learning models can be trained on quantum computers, could be far more efficient, saving precious compute resources, and potentially lowering our environmental impact. 
+    </p><p>In terms of hardware, however, quantum computing is still not entirely scalable. So far, we have only been able to engineer quantum computers with up to around a thousand qubits, with the Microsoft Majorana chip having just eight qubits. This pales in comparison to the number of qubits required to properly run most of these quantum algorithms. For example, to break RSA encryption with a factorisation algorithm, a four thousand qubit chip is required (as a minimum). Some of the more advanced algorithms could take millions of qubits. Creation of these megaqubit-level quantum chips face massive reliability problems. Namely, there is the problem of decoherence. In quantum mechanics, a quantum state of a particle is very delicate. A stray photon from the sun, or even from outer space could cause qubits to decohere (lose their precise quantum state and hence the information they contain). As you can probably imagine, these problems scale exponentially with the number of qubits. Having a million qubits just makes it that much more likely that a random particle would collide into a qubit and mess up the entire algorithm. 
+    </p><p>Some experts predict quantum computers may take until 2030 to be viable. Some sceptics say that quantum computers may never overcome the hurdles they face. One thing, however, is clear: when quantum computers scale and become viable, all our technology would have to evolve and adapt to the quantum landscape. As for whether this will all happen, and if it does, how exactly it will shape our world, who can say? 
+    </p>
+
+  <footer>
+    &copy; <span id="year"></span> Aditya C — All rights reserved.
+  </footer>
+
+  <script>
+    // update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // progress bar logic
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      document.getElementById("progress-bar").style.width = progress + "%";
+    });
+  </script>
+
+</body>
+</html>
