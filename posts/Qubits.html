@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qubits — Aditya C</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@500;600&display=swap');
+
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --muted: #555;
+      --accent: #0066cc;
+      --navy: #0b1a33;
+      --max-width: 780px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* PROGRESS BAR */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.1s ease-out;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 1.2rem 1.5rem;
+    }
+
+    header a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    header a:hover {
+      color: white;
+    }
+
+    /* ARTICLE BODY */
+    .content {
+      max-width: var(--max-width);
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Typography */
+    p {
+      margin: 1.5rem 0;
+      font-size: 1.08rem;
+    }
+
+    h2 {
+      margin-top: 2.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      color: var(--accent);
+    }
+
+    code {
+      background: #f0f0f0;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid #eee;
+      margin-top: 4rem;
+    }
+  </style>
+
+<script>
+  window.MathJax = {
+    tex: {
+      packages: { '[+]': ['physics'] },
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    loader: { load: ['[tex]/physics'] }
+  };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+
+</head>
+
+<body>
+
+  <!-- PROGRESS BAR -->
+  <div id="progress-bar"></div>
+
+  <header>
+    <a href="../posts.html">← Back to Posts</a>
+  </header>
+
+  <div class="content">
+    <h1 class="title">A brief introduction to qubits</h1>
+    <div class="date">Published: November 29th, 2025</div>
+
+    <p>In my previous piece of writing, I discussed quantum computing, and gave a brief description of how it works, however, as I learn more about this field, I feel as though there is more to share. Specifically, I stated that the core of quantum computing is the qubit, and in this mini-article, I wish to explore the qubit in more depth. I will broadly break the topic down into theory and hardware.</p>
+    <p>The theory of qubits reflects the often confusing nature of quantum mechanics itself. The essence of a qubit is that it represents a superposition of two states (either a 0 or a 1), with some probability of either. In quantum mechanics, we would use the "ket" symbol to represent the state of 0 or 1, which may allow me to represent the state of any individual qubit like so: \[
+        \alpha \ket{0} + \beta \ket{1}
+        \]</p>
+    <p>Where alpha is the probability amplitude that the qubit represents a 0 when measured, and beta is the probability amplitude that the qubit represents a 1 when measured. In general, both alpha and beta are complex numbers, and, in order to extract the probability of either a 1 or a 0, you would have to apply the following formula: \[P(0) = |\alpha|^2\] \[P(1) = |\beta|^2\]</p>
+    <p>Those familiar with complex numbers will realise that the "| |" represents the modulus of the complex number. Squaring this yields the respective probability of a 0 or a 1. These complex numbers $\alpha$ and $\beta$ must satisfy the condition:  \[|\alpha|^2 + |\beta|^2 = 1\]</p>
+    <p>Since the only two states the qubit can collapse to are 0 and 1, and so the sum of the probabilities must be 100%.</p>
+    <p>What's interesting about qubits is that once the state of the qubit is measured, it will not re-enter the superposition unless we apply some operation to it. If we measure a qubit and it collapses to represent a "1", it will always read a 1, no matter how many times we measure it (as long as we don't apply any other operation to the qubit). This comes from the concept of wavefunction collapse in quantum mechanics and is utilised extensively in quantum computing.</p>
+    <p>So far, we have only looked at single-qubits, however, naturally, actual quantum computers require lots and lots of qubits. It is often useful to represent qubits as vectors in some n-dimensional space. If we have just one qubit, we can say that the state $\ket{0} = [1, 0]$ and $\ket{1} = [0, 1]$ (one qubit may be represented as a vector in 2-dimensional space). Once we get to two qubits, our vector will have four columns, and, in general, $n$ qubits can be represented by a vector in $2^n$-dimensional space. </p>
+    <p>To actually run quantum algorithms, we need quantum logic gates. Just like in classical computing, algorithms are run by bits and logic gates. However, in quantum computing, quantum logic gates can are represented as matrices! There are many quantum logic gates, each with their own uses. Some quantum gates require a 1-qubit input, such as Hadamard, whereas some require more. Taking the Hadamard gate as an example, it is represented by the matrix $\frac{1}{\sqrt 2} \begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix}$. Remember earlier, when we said that a qubit does not change its measured state until we apply some operation? Well - the Hadamard gate is this operation, It takes some measured qubit as an input, and turns it back into a 50-50 superposition. If you are familiar withe matrix-vector algebra, try taking a measured qubit's vector and multiplying it with the Hadamard matrix!</p>
+    <p>Now that we have taken a look at qubits and quantum logic gates theoretically, let us examine how these theories are brought to life in terms of hardware. There are several ways to actually build a quantum computer. For example, Microsoft's quantum chip uses Majorana quasi-particles, however, broadly speaking, qubits can be made of many different kinds of particle. Photons are probably the most common, as they are also the simplest quantum particle. Photons can be polarised horizontally or vertically, giving us an easy way to represent 0 or 1, and these polarisations can be easily measured. Similarly, another common physical implementation of a qubit is the usage of an electron, and then using its spin (as either up or down) to represent a 0 or 1. As mentioned in the previous article, these quantum states are very fragile (given the scale we are working at), and thus it would only take a single stray photon from the lab environment, the sun or even further out in space to randomly collide with out qubit particle and destroy the superposition. This requires something called quantum error correction, and is one of the hottest topics in quantum computing at the moment (hence why Microsoft's quantum chip made headlines, due to its revolutionary error-correction methods).</p>
+    <p>Quantum computing looks promising, but also is rather dense with physics and mathematics. This brief post is not intended to be a complete guide (especially given that I am far from understanding quantum computing myself and am by no means an expert), but rather as a brief guide to what makes a quantum computer special.</p>
+  
+  
+    <footer>
+    &copy; <span id="year"></span> Aditya C — All rights reserved.
+  </footer>
+
+  <script>
+    // update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // progress bar logic
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      document.getElementById("progress-bar").style.width = progress + "%";
+    });
+  </script>
+
+</body>
+</html>
