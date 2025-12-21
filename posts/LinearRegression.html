@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qubits — Aditya C</title>
+  <title>Linear Regression — Aditya C</title>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@500;600&display=swap');
@@ -118,7 +118,8 @@
         margin: 2.5rem auto;
         border-radius: 8px;
     }
-  </style>
+
+    </style>
 
 <script>
   window.MathJax = {
@@ -149,50 +150,48 @@
     <div class="date">Published: December 21st, 2025</div>
     <p>Recently, I became interested in machine learning and machine learning algorithms. Each machine learning algorithm is different and is best for unique purposes, and I will attempt (and we shall see whether I ever actually finish this endeavour), to write a little bit about each algorithm I come across, and try to find an example use-case for it and then perhaps even build a little example.</p>
     <p>Linear regression is a supervised machine learning algorithm, meaning it is first provided a large dataset of inputs and outputs, a model is built, which can then predict an output for a given input, which may not necessarily be in the original "training" dataset. Specifically, linear regression is best for problems where there is likely to be a linear correlation between the input and output variables, such that (if plotted in two dimensions), the graph would follow a straight line with a Cartesian equation: \[y=mx+c\]</p>
-    <p>When we talk about linear regression in the context of machine learning, we are often dealing with more than one input value. For example, if we wanted to build a model to predict the temperature outside based on other environmental factors, it would need inputs of the humidity, the pressure, the windspeed and so on, which cannot be described on the two-dimensional Cartesian plane. Instead, we have to shift to using vectors for our linear regression instead. If we have $n$ elements in our input list, the "input" can be characterised by a vector in $R^n$ (n-dimensional space), like so: \[x_i = [x_1, x_2, x_3, ..., x_n]\], such that out linear equation becomes $y = \vec{w} \dot \vec{x} + b$. In this case, I have used w and b, which stands for weights and biases. In linear regression, this basically means the gradient and y-intercept respectively. As with any supervised model, we want to maximise how well it fits to the given "training data", and thus, we want to minimise a quantity called loss. In essence, loss is just a measure of how far out our model is from the given data, and there are many different ways of quantifying loss. The most widely utilised (at least in my reading) is MSE (Mean squared error). Simply put, the MSE is the mean of the squared difference between the value predicted by our model, $y_p$ and the actual value given by the entered data, $y_d$ (the squared exists to eliminate negative values). The formula for MSE is therefore as follows: \[\frac{1}{N} \sum_{i=1}^{N} (y_{pi} - y_{di})^2\] Or, in terms of our input, \[\frac{1}{N} \sum_{i=1}^{N} (\vec{x} \dot \vec{w} + b - y_{di})^2\]</p>
+    <p>When we talk about linear regression in the context of machine learning, we are often dealing with more than one input value. For example, if we wanted to build a model to predict the temperature outside based on other environmental factors, it would need inputs of the humidity, the pressure, the windspeed and so on, which cannot be described on the two-dimensional Cartesian plane. Instead, we have to shift to using vectors for our linear regression instead. If we have $n$ elements in our input list, the "input" can be characterised by a vector in $R^n$ (n-dimensional space), like so: \[x_i = [x_1, x_2, x_3, ..., x_n]\], such that out linear equation becomes $y = \vec{w} \cdot \vec{x} + b$. In this case, I have used w and b, which stands for weights and biases. In linear regression, this basically means the gradient and y-intercept respectively. As with any supervised model, we want to maximise how well it fits to the given "training data", and thus, we want to minimise a quantity called loss. In essence, loss is just a measure of how far out our model is from the given data, and there are many different ways of quantifying loss. The most widely utilised (at least in my reading) is MSE (Mean squared error). Simply put, the MSE is the mean of the squared difference between the value predicted by our model, $y_p$ and the actual value given by the entered data, $y_d$ (the squared exists to eliminate negative values). The formula for MSE is therefore as follows: \[\frac{1}{N} \sum_{i=1}^{N} (y_{pi} - y_{di})^2\] Or, in terms of our input, \[\frac{1}{N} \sum_{i=1}^{N} (\vec{x} \cdot \vec{w} + b - y_{di})^2\]</p>
     <p>We now want to minimise the MSE by tweaking the weights and biases in order to find the most optimal regression line. We can do this using gradient descent! </p>
-    <p>Gradient descent easiest to visualise in three dimensions, and so we will consider a case with only one input variable, $x$, and thus a regression line equation of $y=wx+b$. For every possible pair of values $(w,b)$ there will be an MSE loss value associated with it. We can thus make a 3D plot of loss against weight and bias, such that $z = MSE(w,b)$. This gives us a 3D surface plot (example shown in notebook). Gradient descent is an algorithm that is designed to find the minimum point of this graph by continuously stepping "downhill", so to speak. It does this by calculating the negative grad of the 3D graph: \[-\nabla z(w, b)\]</p>#
+    <p>Gradient descent easiest to visualise in three dimensions, and so we will consider a case with only one input variable, $x$, and thus a regression line equation of $y=wx+b$. For every possible pair of values $(w,b)$ there will be an MSE loss value associated with it. We can thus make a 3D plot of loss against weight and bias, such that $z = MSE(w,b)$. This gives us a 3D surface plot (example shown in notebook). Gradient descent is an algorithm that is designed to find the minimum point of this graph by continuously stepping "downhill", so to speak. It does this by calculating the negative grad of the 3D graph: \[-\nabla z(w, b)\]</p>
     <p>This yields a vector in terms of $w$ and $b$. If you substitute a co-ordinate$(w_0,b_0)$, it yields a vector that points in a "downhill" direction on the 3D plot. We then choose a new co-ordinate $(w_1, b_1)$, by "stepping" in the direction of the vector given by our $(w_0, b_0)$ substitution. This means that our new co-ordinate will yield a lower loss than our first guess! If we iterate this process a thousand times, we will reach (or at least, be very, very close) to the "bottom" or "crest" of our 3D graph, such that the loss has been minimised. These final co-ordinates are our optimum values for $w$ and $b$!</p>
-    <p>I have made an example that uses a made-up dataset of exam results on a maths and reading test to create a regression line between the two variables, and it produces a very typical regression and gradient descent problem, as shown below: </p>
-    <figure><img src="/supplementary_files/linear regression/final_regression_line.png" alt="My final regression line with data points" class="article-image"><figcaption>My final regression line with data points</figcaption></figure>
-    <figure><img src="/supplementary_files/linear regression/gradient_descent.png" alt="Gradient descent with 3D plot" class="article-image"><figcaption>Gradient descent (in red) with 3D plot</figcaption></figure>
+    <p>I have made an example that uses a made-up dataset of exam results on a maths and reading test to create a regression line between the two variables, and it produces a very typical regression and gradient descent problem, as shown below (gradient descent path shown in red): </p>
+    <figure><img src="supplementary_files/linear regression/final_regression_line.png" alt="My final regression line with data points" class="article-image"></figure>
+    <figure><img src="supplementary_files/linear regression/gradient_descent.png" alt="Gradient descent with 3D plot" class="article-image"></figure>
     <p>Below is also the code I used for my MSE algorithm and gradient descent:</p>
-    <pre><code>
-        # Making function for MSE:
-        # w for weight, b for bias
-        def mse(student_score, W, B):
-            x = student_score['maths score'].to_numpy()[:, None, None] # Converting to dependent variable numpy
-            y = student_score['reading score'].to_numpy()[:, None, None] # Converting dependent varibale to numpy
+    <pre><code># Making function for MSE:
+# w for weight, b for bias
+def mse(student_score, W, B):
+    x = student_score['maths score'].to_numpy()[:, None, None] # Converting to dependent variable numpy
+    y = student_score['reading score'].to_numpy()[:, None, None] # Converting dependent varibale to numpy
 
-            y_hat = W * x + B # y_hat is the value predicted by the weight and bias for a all x 
-            return np.mean((y_hat - y) ** 2, axis=0) # Calculates the mean of the squared difference between each value in the actual dataset and the predicted value
+    y_hat = W * x + B # y_hat is the value predicted by the weight and bias for a all x 
+    return np.mean((y_hat - y) ** 2, axis=0) # Calculates the mean of the squared difference between each value in the actual dataset and the predicted value
     </code></pre>
 
-    <pre><code>
-        # We now have a 3D surface plot of loss against weights and biases! We can use gradient descent to minimise the loss and thus calculate the optimum weight and bias!
-        def gradient_descent(student_score, lr=1.0e-4, steps=1000): # The size of the "step" taken "downhill" was 1e-4 and the number of steps taken was 1000
-            x = student_score['maths score'].to_numpy()
-            y = student_score['reading score'].to_numpy()
-            N = len(x)
+    <pre><code># We now have a 3D surface plot of loss against weights and biases! We can use gradient descent to minimise the loss and thus calculate the optimum weight and bias!
+def gradient_descent(student_score, lr=1.0e-4, steps=1000): # The size of the "step" taken "downhill" was 1e-4 and the number of steps taken was 1000
+    x = student_score['maths score'].to_numpy()
+    y = student_score['reading score'].to_numpy()
+    N = len(x)
 
-            w, b = -10, 0
-            history = [] # This array would record the points to which we moved our "working" co-ordinate so that we could later visualise the path our gradient descent took
+    w, b = -10, 0
+    history = [] # This array would record the points to which we moved our "working" co-ordinate so that we could later visualise the path our gradient descent took
 
-            for i in range(steps):
-                y_hat = w * x + b
-                error = y_hat - y # Calculating difference between predicted and real value
+    for i in range(steps):
+        y_hat = w * x + b
+        error = y_hat - y # Calculating difference between predicted and real value
 
-                dw = (2 / N) * np.sum(error * x) # Required change in w co-rdinate
-                db = (2 / N) * np.sum(error) # Required change in b co-ordinate
+        dw = (2 / N) * np.sum(error * x) # Required change in w co-rdinate
+        db = (2 / N) * np.sum(error) # Required change in b co-ordinate
 
-                w -= lr * dw # Changing w co-ordinate to minimise MSE
-                b -= lr * db # Changing b co-ordinate to minimise MSE 
+        w -= lr * dw # Changing w co-ordinate to minimise MSE
+        b -= lr * db # Changing b co-ordinate to minimise MSE 
 
-                history.append((w, b)) # Adding new co-ordinate to the gradient descent path
+        history.append((w, b)) # Adding new co-ordinate to the gradient descent path
 
-            return w, b, np.array(history)
+    return w, b, np.array(history)
     </code></pre>
-    <p>The full notebook and database can be found on the "Projects" page of this website</p>
+    <p>The full notebook and database can be found on the "Projects" page of this website.</p>
     <p>So what is linear regression actually good for? Well, it's certainly decent at predicting test results, but, outside of that, multivariable linear functions can be used to model a whole host of problems, from the stock market, house prices and temperature. Linear relationships are exceedingly common in nature, making linear regression an exptremely powerful tool. Naturally, this is just one of the many, many machine learning algorithms, but hopefully this has provided some valuable insight into how a supervised machine could "learn" how to make semi-accurate predictions. I hope to write about more algorithms soon!</p>
 
 
