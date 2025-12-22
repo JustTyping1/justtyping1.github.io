@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Posts – Aditya C</title>
+  <title>Posts — Aditya C</title>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@500;600&display=swap');
 
@@ -17,13 +18,9 @@
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
     }
 
     body {
@@ -36,63 +33,88 @@
       min-height: 100vh;
     }
 
-    /* HEADER BAR */
+    /* HEADER */
     header {
-      background-color: var(--navy);
+      background: var(--navy);
       color: white;
-      padding: 1.5rem 1.5rem 1rem;
+      padding: 1.5rem;
       text-align: center;
     }
 
     header h1 {
       font-family: 'Poppins', sans-serif;
       font-size: 1.6rem;
-      font-weight: 600;
       margin-bottom: 0.3rem;
-      letter-spacing: 0.5px;
     }
 
     header p {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
       margin-bottom: 1rem;
     }
 
-    nav {
-      margin-top: 0.5rem;
-    }
-
     nav a {
+      color: rgba(255,255,255,0.85);
       text-decoration: none;
-      color: rgba(255, 255, 255, 0.85);
       margin: 0 1rem;
-      font-weight: 500;
       font-family: 'Poppins', sans-serif;
-      letter-spacing: 0.3px;
-      transition: color 0.2s ease;
     }
 
     nav a:hover {
-      color: #ffffff;
+      color: white;
     }
 
-    /* MAIN CONTENT */
+    /* MAIN */
     main {
-      flex: 1;
       max-width: var(--max-width);
       margin: 3rem auto;
       padding: 0 1.5rem;
+      flex: 1;
     }
 
     .page-title {
       text-align: center;
       font-family: 'Poppins', sans-serif;
       font-size: 2rem;
-      font-weight: 600;
-      color: var(--text);
       margin-bottom: 2rem;
     }
 
+    /* SEARCH */
+    .search-bar {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      margin-bottom: 1.5rem;
+      font-family: inherit;
+    }
+
+    /* TAG FILTERS */
+    .tag-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .tag {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      border: 1px solid #ddd;
+      background: #fafafa;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tag.active,
+    .tag:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    /* POSTS */
     .posts {
       display: grid;
       gap: 1.5rem;
@@ -106,99 +128,131 @@
     }
 
     .post:hover {
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       transform: translateY(-2px);
     }
 
     .post h2 {
       font-family: 'Poppins', sans-serif;
       font-size: 1.3rem;
-      color: var(--accent);
       margin-bottom: 0.5rem;
+    }
+
+    .post h2 a {
+      color: var(--accent);
+      text-decoration: none;
     }
 
     .post p {
       color: var(--muted);
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.7rem;
     }
 
-    .post a {
-      text-decoration: none;
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .post a:hover {
-      text-decoration: underline;
+    .post small {
+      color: var(--muted);
     }
 
     /* FOOTER */
     footer {
-      background-color: #f7f7f7;
+      background: #f7f7f7;
       text-align: center;
       font-size: 0.9rem;
       color: var(--muted);
       padding: 1rem;
       border-top: 1px solid #eee;
-      margin-top: auto;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.3rem;
-      }
-      nav a {
-        margin: 0 0.5rem;
-      }
-      .post {
-        padding: 1.2rem;
-      }
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Posts</h1>
-    <p>Articles and writing by Aditya C</p>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="posts.html">Posts</a>
-      <a href="projects.html">Projects</a>
-      <a href="resources.html">Resources</a>
-    </nav>
-  </header>
+<header>
+  <h1>Posts</h1>
+  <p>Articles and writing by Aditya C</p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="posts.html">Posts</a>
+    <a href="projects.html">Projects</a>
+    <a href="resources.html">Resources</a>
+  </nav>
+</header>
 
-  <main>
-    <h2 class="page-title">Latest Posts</h2>
+<main>
+  <h2 class="page-title">Latest Posts</h2>
 
-    <div class="posts">
-      <article class="post">
-        <h2><a href="posts/QuantumComputers.html">Quantum Computing - what is it?</a></h2>
-        <p>A brief description of what quantum computers are, how they work, their potential and the challenges they face</p>
-        <small>9th November, 2025</small>
-      </article>
+  <input
+    type="text"
+    id="searchInput"
+    class="search-bar"
+    placeholder="Search posts..."
+  />
 
-      <article class="post">
-        <h2><a href="posts/Qubits.html">Qubits</a></h2>
-        <p>A brief discussion of qubits - the hardware and theory - and thier role in the field</p>
-        <small>29th November, 2025</small>
-      </article>
+  <div class="tag-filters">
+    <div class="tag active" data-tag="all">All</div>
+    <div class="tag" data-tag="quantum">Quantum</div>
+    <div class="tag" data-tag="physics">Physics</div>
+    <div class="tag" data-tag="machine-learning">Machine Learning</div>
+  </div>
 
-      <article class="post">
-        <h2><a href="posts/LinearRegression.html">Linear Regression and Gradient Descent</a></h2>
-        <p>The first of what I hope to be a few machine learning algorithms unpacked with an example project</p>
-        <small>21st December, 2025</small>
-      </article>
-  </main>
+  <div class="posts" id="posts">
 
-  <footer>
-    &copy; <span id="year"></span> Aditya C — All rights reserved.
-  </footer>
+    <article class="post" data-tags="quantum physics">
+      <h2><a href="posts/QuantumComputers.html">Quantum Computing — What Is It?</a></h2>
+      <p>A brief description of what quantum computers are, how they work, and the challenges they face.</p>
+      <small>9 November 2025</small>
+    </article>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <article class="post" data-tags="quantum physics">
+      <h2><a href="posts/Qubits.html">Qubits</a></h2>
+      <p>An exploration of qubits — both the theory and the hardware behind them.</p>
+      <small>29 November 2025</small>
+    </article>
+
+    <article class="post" data-tags="machine-learning">
+      <h2><a href="posts/LinearRegression.html">Linear Regression and Gradient Descent</a></h2>
+      <p>A practical introduction to linear regression with a worked example.</p>
+      <small>21 December 2025</small>
+    </article>
+
+  </div>
+</main>
+
+<footer>
+  &copy; <span id="year"></span> Aditya C — All rights reserved.
+</footer>
+
+<script>
+  const searchInput = document.getElementById("searchInput");
+  const posts = document.querySelectorAll(".post");
+  const tags = document.querySelectorAll(".tag");
+
+  function filterPosts() {
+    const query = searchInput.value.toLowerCase();
+    const activeTag = document.querySelector(".tag.active").dataset.tag;
+
+    posts.forEach(post => {
+      const text = post.innerText.toLowerCase();
+      const postTags = post.dataset.tags;
+
+      const matchesSearch = text.includes(query);
+      const matchesTag = activeTag === "all" || postTags.includes(activeTag);
+
+      post.style.display = matchesSearch && matchesTag ? "" : "none";
+    });
+  }
+
+  searchInput.addEventListener("input", filterPosts);
+
+  tags.forEach(tag => {
+    tag.addEventListener("click", () => {
+      tags.forEach(t => t.classList.remove("active"));
+      tag.classList.add("active");
+      filterPosts();
+    });
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
