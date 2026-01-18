@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linear Regression — Aditya C</title>
+  <title>Logistic Regression — Aditya C</title>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@500;600&display=swap');
@@ -146,9 +146,62 @@
   </header>
 
   <div class="content">
-    <h1 class="title">Linear Regression and Gradient Descent</h1>
-    <div class="date">Published: January 17th, 2026</div>
-    <p></p>
+    <h1 class="title">Logistic Regression</h1>
+    <div class="date">Published: January 18th, 2026</div>
+    <p>Perhaps best described as a sibling of the first algorithm I covered, logistic regression is actually very similar to linear regression. Whilst it has slightly different applications and mathematics, the core principle of a supervised machine learning algorithm that aims fit a curve to data by minimising loss, remains essentially the same. Logistic regression is, however, used mainly for applications where we want an output with a numerical value between 0 and 1 (often a probability), and as such, logistic methods are often incorporated into other machine learning algorithms, such as neural networks, as well as on its own. At the core of logistic regression is the Sigmoid function: \[y=\frac{1}{1+e^{-z}}\]</p>
+    <p>This function is useful because it always returns a value between 0 and 1 (has horizontal asymptotes at $y=0$ and $y=1$). The graph of a sigmoid function is shown below</p>
+    <figure><img src="supplementary_files/logistic regression/sigmoid.png" alt="Sigmoid" class="article-image"></figure>
+    <p>Once again, however, we are usually dealing with multiple parameters, rather than just one, and so the input, $z$, can be written as linear in all the parameters: \[z = b + \sum_{i=1}^{N} w_i x_i\]</p>
+    <p>Now, we may define the loss function we are going to use for the logistic regression model. We don't usually use MSE (mean squared error) for logistic regression, instead using a function called log loss, defined as such: \[Logloss = -\frac{1}{N} \sum_{i=1}^{N} y_i \log(y_i') + (1-y_i) \log(1-y_i')\]</p>
+    <p>Where $y_i$ is the value in the training data (usually 0 or 1) and $y_i'$ is the value predicted by the model</p>
+    <p>For my particular example, I chose to use a training data set about whether pigeons would eat a piece of bread thrown to them, depending on the size of the bread crumb. I restricted this to one input value for the sake of simplicity, but it could, of course, be expanded to multiple variables, such as taking the number of pigeons in the vicinity as another input parameter. Why is logistic regression suitable for this dataset and problem? It's because the output value on the training data is either "1" (the bread is eaten by the pigeon) or "0" (the bread is not eaten), and we want our model to output a value between 0 and 1, which is interpreted as a probability that the bread will be eaten.</p>
+    <p>First, I plotted the training data:</p>
+    <figure><img src="supplementary_files/logistic regression/training_values.png" alt="Training data" class="article-image"></figure>
+    <p>I then wrote a script for the logloss function:</p>
+    <pre><code>
+# Log loss function:
+
+def logloss(params, dataset):
+    W, B = params  # optimizer passes parameters as an array
+
+    x = dataset['bun_size'].to_numpy()
+    y = dataset['will_eat_bun'].to_numpy()
+
+    z = B + W * x
+    y_hat = 1 / (1 + np.exp(-z)) # calculating predicted value by model
+
+    eps = 1e-9
+    y_hat = np.clip(y_hat, eps, 1 - eps) # restricts values of y_hat 
+
+    loss = -np.mean(
+        y * np.log(y_hat) + (1 - y) * np.log(1 - y_hat)
+    )
+
+    return loss
+    </code></pre>
+    <p>This logloss function can then be minimised using any optimisation tool (like gradient descent). For today's purposes I just used the scipy library to minimise and I got the values for my W and B parameters, and thus was able to plot my final curve!</p>
+    <p>Drumroll please...</p>
+    <figure><img src="supplementary_files/logistic regression/final_line.png" alt="Final line" class="article-image"></figure>
+    <p>At first I was a little underwhelmed by this line until I took a closer look. Upon first inspection, it looks almost linear - the curve in the line is definetely present, but quite subtle. I think the reason why it doesn't look like a typical sigmoid curve is because of the training data, and the number of outliers. As can be seen above, if the bun size between 1.00 and 2.25, there's huge "overlap" in the pigeon's preference, leading to the model trying to correct for that by making more "mellow" predictions in that range</p>
+    <p>So we certainly learnt that pigeons are really quite unpredictable (which I am sure comes as a shock to everyone). Aside from this silly application, logistic regression is actually one of the most used techniques in machine learning. It can be used in any scenario where there is a 1/0 binary output (like whether the price of a stock will go up or down at any given instant), but it can also be used to transform outputs from other functions into probabilities, which is immensely handy for other ML applications.</p>
+    <p>Writing about linear and logistic regression has given me what feels like a quick glance at the tip of the iceberg of ML, and I hope to further explore the plethora of algorithms soon! (The full notebook can be founded in the projects tab)</p>
+    
+    <h3>Data & Attribution</h3>
+    <p>
+      Dataset: <em>“Will pigeon eat bun?”</em> by <strong>prok2027</strong>,
+      sourced from
+      <a href="https://www.kaggle.com/datasets/prok2027/will-pigeon-eat-bun" target="_blank">
+        Kaggle
+      </a>.
+    </p>
+    <p>
+      Licensed under
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+        CC BY-SA 4.0
+      </a>.
+    </p>
+
+
     <footer>
     &copy; <span id="year"></span> Aditya C — All rights reserved.
   </footer>
