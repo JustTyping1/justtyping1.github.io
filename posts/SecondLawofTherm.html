@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The second Law of thermodynamics — Aditya C</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@500;600&display=swap');
+
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --muted: #555;
+      --accent: #0066cc;
+      --navy: #0b1a33;
+      --max-width: 780px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* PROGRESS BAR */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.1s ease-out;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 1.2rem 1.5rem;
+    }
+
+    header a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    header a:hover {
+      color: white;
+    }
+
+    /* ARTICLE BODY */
+    .content {
+      max-width: var(--max-width);
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Typography */
+    p {
+      margin: 1.5rem 0;
+      font-size: 1.08rem;
+    }
+
+    h2 {
+      margin-top: 2.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      color: var(--accent);
+    }
+
+    code {
+      background: #f0f0f0;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid #eee;
+      margin-top: 4rem;
+    }
+  </style>
+
+<script>
+  window.MathJax = {
+    tex: {
+      packages: { '[+]': ['physics'] },
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    loader: { load: ['[tex]/physics'] }
+  };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+
+</head>
+
+<body>
+
+  <!-- PROGRESS BAR -->
+  <div id="progress-bar"></div>
+
+  <header>
+    <a href="../posts.html">← Back to Posts</a>
+  </header>
+
+  <div class="content">
+    <h1 class="title">The second law of thermodynamics</h1>
+    <div class="date">Published: January 24th, 2026</div>
+    <p>The second law of thermodynamics is perhaps the most fundamental law we have in all of physics.</p>
+    <blockquote>
+        <p>
+            “The law that entropy always increases holds, I think, the supreme position among the laws of Nature. If someone points out to you that your pet theory of the universe is in disagreement with Maxwell's equations – then so much the worse for Maxwell's equations. If it is found to be contradicted by observation – well, these experimentalists do bungle things sometimes. But if your theory is found to be against the second law of thermodynamics I can give you no hope; there is nothing for it but to collapse in deepest humiliation.”
+        </p>
+    </blockquote>
+
+    <p>The above quote is taken from Sir Arthur Stanley Eddington, famous for his work on relativity alongside Einstein.</p>
+    <p>
+        But what is this illusive law that I have been alluding to? Why do the world's greatest physicists have so much confidence in it, and why is it useful at all?
+    </p>
+    <p>
+        The statement of the second law of thermodynamics is deceptively simple: the total entropy of the universe always increases. That is, $\Delta S \geq 0$. To break this down, we must first grasp what is meant by entropy. Entropy is a tricky thing to define, despite the fact that it shows up a lot in physics and chemistry - namely, in determining the spontenaiety of a reaction with Gibb's free energy ($\Delta G = \Delta H - T \Delta S$). The best way I have heard it be described is a measure of disorder, or number of possible states (in fact, this is how entropy is defined quantitatively: $S = k_b \ln{\Omega}$, where $k_b$ is the Boltzmann constant and $\Omega$ is the number of possible microscopic configurations). If you were to take a block of metal with some internal energy, it could just so happen (by chance) that all of the particles in one corner of the block contained all of the block's internal energy, and so that corner would be hot to touch, whereas the rest of the block would be at absolute zero (-273 degrees). This is, of course, exceedingly unlikely to happen by chance, since there are many, many more ways in which the energy could be distributed more evenly ("disordered") than being "ordered". To sum it up, "there are more states of disorder than there are of order", and so we always tend towards more disorder, due to the approximately random motion of particles. Of course, if we were to have a system of only 2 or 3 particles, the likelihood of such an ordered state being manifested is much higher, so it seems that the second law of thermodynamics is "broken". However, one must take into accound that the second law is, in its nature, probabalistic. It may be more accurate to phrase it like "the total entropy of the universe <em>almost always</em> increases, but the exceptions are so extraordinarily rare on a macroscopic level, that we can generalise it as a law" (but that's not as catchy).
+    </p>
+    <p>
+        There have been many attempts over the ages that have tried to attack the second law of thermodynamics, and often these thought experiments, despite proving unsuccessful, reveal some interesting thermodynamic properties. The most notable of these is Maxwell's demon, first proposed by the famous physicist James Clerk Maxwell. Maxwell posited there be a box separated into halves by a wall with a trap door in it. Both sides are filled with gas. Maxwell suggested that atop the box could sit an entity that could open the trapdoor when a fast-moving particle hit the wall, moving it to one side, and keep it closed for all slow-moving particles, thereby "sorting" the particles into "fast" and "slow", esentially making onse side of the box hotter than the other (seemingly) without expending any energy! Of course, such a situation is purely theoretical since no such box or entity could practically exist, but the problem of Maxwell's demon posed a challenge to thermodynamics nonetheless.
+    </p>
+    <p>
+        One of the most ingenious responses to the problem of Maxwell's demon came from Leo Szilard, one of the Manhattan project's top scientists. He solved the problem of Maxwell's demon by pointing out that in order for the entity to be able to separate the molecules by speed, it must first have a way of measuring and distinguishing the speeds of said molecules. This "collection of information" by the demon itself is an expenditure of energy, and thus leads to an increase in entropy outside the box, which negates the decrease in entropy inside the box (and some more!). Hence, the second law of thermodynamics is saved!
+    </p>
+    <p>
+        Szilard went further to refine the idea of Maxwell's thought experiment to create what is known as Szilard's engine. In this model, Szilard gives the entity complete control over the partition between the two sides of the box (starting with no partition), and reduces the gas down to one particle, with a hot water bath next to the box. Szilard argues that if the entity measures the particle to be on the left side of the box, it can close the partition, "trapping" the particle on that side. The entity could then attatch an extended piston to that side and have the particle do meaningful work, as the piston would eventually compress the piston by colliding with it. This execution of useful work without an increase in entropy should not be possible, and Szilard's own resolution to this problem is what linked thermodynamics to information theory. Since the particle, when the door was closed, had two possible states, the cost (increase in entropy $\Delta S = k_b \ln{2}$) must be attributed the entity's aquisition of information! That is, since the entity went from being unaware of the particle's position to knowing which side it was on, the gas decreased in entropy, and for the process to continue, the entity must have "forgot" the information it gained about the position of the particle. This loss of information on the entity's part comes with an associated cost in the entropy of the system. "Forgetting" information costs entropy, and increases disorder.
+    </p>
+    <p>
+        It is undeniable that the second law of thermodynamics is a key pillar upon which modern physics is built. The fact that people like Einstein and Eddington held it in such high regard is very telling as to its beauty in brevity and applicability. What's more, it was one of the catalysts for the ultraviolet catstrophe, the beginning of quantum mechanics, the most revolutionary theory of modern times.
+    </p>
+
+
+    <footer>
+    &copy; <span id="year"></span> Aditya C — All rights reserved.
+  </footer>
+
+  <script>
+    // update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // progress bar logic
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      document.getElementById("progress-bar").style.width = progress + "%";
+    });
+  </script>
+
+</body>
+</html>
