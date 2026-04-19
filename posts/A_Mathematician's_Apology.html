@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Mathematician's Apology Review — Aditya C</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@500;600&display=swap');
+
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --muted: #555;
+      --accent: #0066cc;
+      --navy: #0b1a33;
+      --max-width: 780px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* PROGRESS BAR */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.1s ease-out;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 1.2rem 1.5rem;
+    }
+
+    header a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    header a:hover {
+      color: white;
+    }
+
+    /* ARTICLE BODY */
+    .content {
+      max-width: var(--max-width);
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Typography */
+    p {
+      margin: 1.5rem 0;
+      font-size: 1.08rem;
+    }
+
+    h2 {
+      margin-top: 2.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      color: var(--accent);
+    }
+
+    code {
+      background: #f0f0f0;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid #eee;
+      margin-top: 4rem;
+    }
+  </style>
+
+<script>
+  window.MathJax = {
+    tex: {
+      packages: { '[+]': ['physics'] },
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    loader: { load: ['[tex]/physics'] }
+  };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+
+</head>
+
+<body>
+
+  <!-- PROGRESS BAR -->
+  <div id="progress-bar"></div>
+
+  <header>
+    <a href="../posts.html">← Back to Posts</a>
+  </header>
+
+  <div class="content">
+    <h1 class="title"><em>A Mathematician's Apology</em> by GH Hardy</h1>
+    <div class="date">Published: March 19th, 2026</div>
+    <p>★★★★★★★☆☆☆</p>
+    <p>GH Hardy's classic essay "A Mathematician's Apology" has cemented itself as a timeless defense of the mathematician's purpose. The piece dives into the condition of mathematics, what it means to "do" mathematics and, most importantly, at the crux of Hardy's most famous essay, it explores why we even bother with pure mathematics, a question which is, really, not answered until the very end of the essay. </p>
+    <p>Hardy's writing style is a very unique blend of eloquent wording, whilst also maintaining a very direct delivery of his message, a combination characteristic of writing from his era. Hardy's discussion focuses on the justification of mathematics to a layperson, who may question what the point of "pure" mathematics is at all, beginning with a contemplation of how one might justify <em>any</em> profession, and then examines the differences between applied and pure mathematics, as well as the enduring nature of mathematical proof. Hardy, in this very essay, famously wrote "'Immortality' may be a silly word, but probably a mathematician has the best chance of whatever it may mean.". Hardy presents some of the great proofs of mathematics (the famous proof of $\sqrt{2}$ being irrational, among others), and assigns traits to theorems, allowing them to be classified as ‘significant’ or ‘serious’. Among these traits are 'generality' and 'depth', which are discussed at length in Hardy's defense.</p>
+    <p>This is where Hardy begins to describe a rather exclusive definition of "real" mathematics, where the mathematics used by the engineer or physicist is relegated below what Hardy views as ‘real’ mathematics, meaning areas such as combinatorics and number theory. It is at this point that Hardy begins to claim that the invented worlds of mathematicians are more interesting—and, in a sense, more real—than the material world, and uses the idea of mathematics being some kind of transcendent entity, which has no application, and so is, in Hardy's own words, useless, and yet still has immense value. He concludes by addressing the question posed at the beginning, arguing that the reason we pursue pure mathematics is to advance knowledge, and for it's inherent aesthetic beauty and elegance, no matter how economically or practically "useful" it may be. By the way, Hardy also places the then newly developed field of quantum mechanics in the category of "real mathematics", which he also describes, by association, as "useless".</p>
+    <p>I often wonder what Hardy would have thought about modern mathematics and physics. Certainly, many of the ideas that Hardy deemed to be pure mathematics, with no application turned out to have use in physics (such as quantum mechanics), but also in the then non-existent field of computer science, which makes extensive use of "pure" mathematics. Overall, "A Mathematician's Apology" leans into the fundamental questions of the philosophy of mathematics and is undoubtedly a timeless treatise, that I would recommend to anyone intending to pursue a mathematics or mathematics-adjacent university course.</p>
+  <footer>
+    &copy; <span id="year"></span> Aditya C — All rights reserved.
+  </footer>
+
+  <script>
+    // update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // progress bar logic
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      document.getElementById("progress-bar").style.width = progress + "%";
+    });
+  </script>
+
+</body>
+</html>
