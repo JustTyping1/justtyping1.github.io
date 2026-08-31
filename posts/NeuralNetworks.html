@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neural Networks — Aditya C</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@500;600&display=swap');
+
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --muted: #555;
+      --accent: #0066cc;
+      --navy: #0b1a33;
+      --max-width: 780px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* PROGRESS BAR */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.1s ease-out;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 1.2rem 1.5rem;
+    }
+
+    header a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    header a:hover {
+      color: white;
+    }
+
+    /* ARTICLE BODY */
+    .content {
+      max-width: var(--max-width);
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Typography */
+    p {
+      margin: 1.5rem 0;
+      font-size: 1.08rem;
+    }
+
+    h2 {
+      margin-top: 2.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      color: var(--accent);
+    }
+
+    code {
+      background: #f0f0f0;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid #eee;
+      margin-top: 4rem;
+    }
+  </style>
+
+<script>
+  window.MathJax = {
+    tex: {
+      packages: { '[+]': ['physics'] },
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    loader: { load: ['[tex]/physics'] }
+  };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+
+</head>
+
+<body>
+
+  <!-- PROGRESS BAR -->
+  <div id="progress-bar"></div>
+
+  <header>
+    <a href="../posts.html">← Back to Posts</a>
+  </header>
+
+  <div class="content">
+    <h1 class="title">Neural Networks</h1>
+    <div class="date">Published: August 31st, 2026</div>
+
+    <p>
+        Neural networks are one of the most widely used machine learning algorithms. They are roughly modelled after the human brain with neurons that have a certain activation and connections between them (synapses in the brain). In this article, I will be breaking down the theory of a neural network. </p>
+    <p>We will be trying to build a neural network that takes in an image of a handwritten digit as an input (a 28x28 image so 784 pixels) and returns what digit has been written between 0-9, so the output will be one of 10 options: a ten dimensional vector that has a "1" in the slot of the "correct" number and 0s in all the other entries. So, if the number is a 7, the ideal output we want is a 10-D vector with a "1" as the seventh entry and all the rest being 0s.</p>
+    <p>Neural networks are structured in layers - an input layer and an output layer with several "hidden layers" in between. In fact, each neuron on the second layer will take the values of the first layer neurons as an input. Suppose the first layer of neurons is a vector $\vec{A_0} = [0.1, 0.9, 0.3, ..., 0.5]$. Suppose that (as will be in the case in the actual implementation), this "input layer" has 784 neurons, and thus the input vector is 784-dimensional. Suppose we decide that the second layer has (arbitrarily) 350 neurons. Thus if we multiply the input vector by a matrix of dimension $350 \times 784$, our output will be a 350-dimensional vector. Let's call the matrix $\textbf{W}_{1}$. Then, adding in a bias vector, for one individual neuron, we get $\vec{Z_1} = \textbf{W}_1 \vec{A_0} + \vec{b_1}$, where $\vec{A_0}$ is our input layer. This is essentially what we did with linear regression but doing it for a layer of neurons as part of a giant network. Then, to introduce non-linearity and map the value between $0$ and $1$, we pass $\vec{Z}_1$ through a sigmoid function (as we did in logistic regression). We then repeat this for all the layers until we get to the final layer (instead of sigmoid for the final layer, we will use a function called softmax where $f(Z_{L,k}) = \frac{e^{Z_{L,k}}}{\sum_{j=0}^{9} e^{Z_{L,j}}}$). In our case, the final layer will have ten neurons. </p>
+    <p>So where does the learning actually happen? The values that fill the matrices $\textbf{W}_{1}$, $\textbf{W}_{2}$ and so on, as well as the values of the biases will be varied to minimise the cost! In this case, we will be using a special kind of logarithmic cost function: \[C = -\frac{1}{m}\sum_{j=1}^{m}\sum_{k=0}^{9}Y_{kj}\log(A_{L,kj})\]</p>
+    <p>Therefore, since every element of $Y_{kj}$ except for the "correct" element is 0, for an individual training example, the sum over $k$ leaves us with just $-\log(A_{L,nj})$, where $n$ is the "correct" response. This means that the cost is determined by how much probability the network assigns to the correct answer. If $A_{L,nj} \approx 1$ (which is what we want), then $-\log(A_{L,nj}) \approx 0$, so the cost is very small. On the other hand, if the network assigns a very small probability to the correct answer, then $-\log(A_{L,nj})$ becomes very large, resulting in a large cost. For example, if the network assigns a probability of $0.9$ to the correct answer, the cost is $-\log(0.9) \approx 0.105$, whereas if it assigns a probability of $0.01$, the cost is $-\log(0.01) \approx 4.61$. This means that the cost function strongly penalises the network for being confident in an incorrect answer, while giving very little penalty when it is confident in the correct answer. Finally, the factor of $\frac{1}{m}$ means that we take the average cost over all $m$ training examples. </p>
+    <p>To minimise the cost function, we will need to employ gradient descent, but we cannot just graph out all of the weights and biases and their effect on the cost - that would be horribly inefficient. Instead, since we know that the vector $- \nabla\cdot C$ will point in the direction of decreasing cost, we should instead try and work out how we should vary each weight and bias to reduce the cost function, and to do that, we will need to find $\frac{\partial C}{\partial w_i}$ and $\frac{\partial C}{\partial b_i}$ for each individual weight and bias. Then, for each individual weight and bias in the network, we will employ the formula $w_{new,i} = w_{old,i} - \alpha \frac{\partial C}{\partial w_i}$, where $\alpha$ is a constant called the learning rate.</p>
+    <p>So let's take a look at what affects the value of the cost function: \[\frac{\partial C}{\partial A_{L,kj}} = -\frac{1}{m} \frac{Y_{kj}}{A_{L,kj}}\] (neglected the factor at the front, since it's just a constant and this is just the derivative of the cost function with respect to the output layer value). Now, to find the individual impact of each weight and bias on the cost, we must first find the impact of each weight and bias on the final layer - $A_L$, and so, by the chain rule, $\frac{\partial C}{\partial w_i} = \frac{\partial C}{\partial A_L} \frac{\partial A_L}{\partial w_i}$.</p>
+    <p>The chain does not stop there though! You'll notice that the value of $A_L$ not only depends on the weights and biases of the penultimate layer but also on the activations of the previous layer of neurons. Therefore, the chain rule for finding $\frac{\partial C}{\partial w_i}$ becomes absurdly long with chains like for a network with just three layers:  \[\frac{\partial C}{\partial w_i} = \frac{\partial C}{\partial A_L} \frac{\partial A_L}{\partial Z_3} \frac{\partial Z_3}{\partial A_2} \frac{\partial A_2}{\partial Z_2} \frac{\partial Z_2}{\partial A_1} \frac{\partial A_1}{\partial Z_1} \frac{\partial Z_1}{\partial w_i}\]</p>
+    <p>In this case, $Z_i$ is the value produced by the weighted sum and bias before it gets fed into the activation function, and so $\frac{\partial A_i}{\partial Z_i}$ is simply the derivative of the sigmoid function, \[\frac{\partial A_i}{\partial Z_i} = \frac{1}{1+e^{-Z_i}} \frac{e^{-Z_i}}{1+e^{-Z_i}}\]</p>
+    <p>(Since we are using softmax for the final activation, the cost gives a really nice result $\frac{\partial C}{\partial Z_L} = \frac{1}{m}(A_L - Y)$). This leads into the idea of backpropagation - the key idea behind how neural networks learn and improve!</p>
+    <p>Backpropagation is (shockingly) the reverse of forward propagation. It is an algorithm that looks at the final cost function and works backwards through the neural network - here is how it works:</p>
+    <p>Start at the cost - calculate $\frac{\partial C}{\partial Z_L}$. Then, since $Z_L = W_{L} A_{L-1} + b_{L}$, $\frac{\partial Z_{L,k}}{\partial w_{ki}} = a_{L-1,i}$ (therefore the gradient of a weight is proportional to the activation coming into that weight). Since $\frac{\partial C}{\partial w_{ki}} = \frac{\partial C}{\partial Z_{L,k}} \frac{\partial Z_{L,k}}{\partial w_{ki}} = \frac{1}{m} (A_{L,k} - Y_{k}) a_{L-1, i}$, the gradient descent change of $w_i$ depends on the activation of the previous layer! This leads us to the previous layer, where we first calculate how the cost depends on the previous layer's activations, and then pass this through the derivative of the sigmoid activation. We can then calculate the gradients of the weights and biases in that layer, and repeat this process until we reach the input layer (backpropagation has calculated all the gradients). Then we apply the above formula (gradient descent) to all the weights and biases in the network ($w_{new,i} = w_{old,i} - \alpha \frac{\partial C}{\partial w_i}$). A note should also be made that this whole example was demonstrating the gradient w.r.t a weight. The process is virtually identical for a bias, with the subtle difference that $\frac{\partial Z_{L,k}}{\partial b_{L,k}} = 1$. Then we simply continue to work backwards through the network (resusing calculated derivatives): $\frac{\partial C}{\partial A_{L-1}} = \frac{\partial C}{\partial Z_{L}} \frac{\partial Z_L}{\partial A_{L-1}}$ and $\frac{\partial C}{\partial Z_{L-1}} = \frac{\partial C}{\partial A_{L-1}} \frac{\partial A_{L-1}}{\partial Z_{L-1}}$. This is the essence of backpropagation: systematically working backwards through the network using the chain rule to calculate the gradient of the cost with respect to every parameter in the network.</p>  
+    <p>After going through many iterations of this process (and changing the parameters according to gradient descent), we should have a set of weights and biases that produces fairly accurate results!</p>
+    <p>Hopefully, in the near future, I will post a part two of this post where I will explain how a neural network would actually be implemented in python. See you then!</p>
+  <footer>
+    &copy; <span id="year"></span> Aditya C — All rights reserved.
+  </footer>
+
+  <script>
+    // update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // progress bar logic
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      document.getElementById("progress-bar").style.width = progress + "%";
+    });
+  </script>
+
+</body>
+</html>
